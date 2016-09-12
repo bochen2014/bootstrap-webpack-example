@@ -9,6 +9,7 @@ var path = require('path');
 module.exports = {
   //entry <============== passed in by gulp
   cache: true,
+  entry:['./index.js'],
   // ### Output
   // karma-webpack will specify the output path when testing. This
   // setting is used for building.
@@ -24,15 +25,16 @@ module.exports = {
       { test: /bootstrap\/js\//, loader: 'imports?jQuery=jquery' },
 
       // Needed for the css-loader when [bootstrap-webpack](https://github.com/bline/bootstrap-webpack)
-      // loads bootstrap's css.
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&minetype=application/font-woff" },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" },
-      {
-        test: /\.((woff2?)(\?v=[0-9]\.[0-9]\.[0-9]))|(woff2?)$/,
-        loader: 'url?limit=10000'
-      }
+      // loads bootstrap's css.     
+      { test: /\.(woff|woff2)$/,               loader: "url?limit=10000&minetype=application/font-woff" },
+      { test: /\.ttf?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
+      { test: /\.eot?$/,    loader: "file" },
+      { test: /\.svg?$/,    loader: "url?limit=10000&minetype=image/svg+xml" }
+      //*.woff?v=1.1.1      ?????????   why do we need that?? 
+      // { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&minetype=application/font-woff" },  
+      // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
+      // { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
+      // { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" }
     ]
   }
 };
