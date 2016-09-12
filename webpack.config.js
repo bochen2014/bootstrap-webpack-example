@@ -7,6 +7,7 @@
 var path = require('path');
 
 module.exports = {
+  //entry <============== passed in by gulp
   cache: true,
   // ### Output
   // karma-webpack will specify the output path when testing. This
@@ -27,7 +28,11 @@ module.exports = {
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,   loader: "url?limit=10000&minetype=application/font-woff" },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" }
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" },
+      {
+        test: /\.((woff2?)(\?v=[0-9]\.[0-9]\.[0-9]))|(woff2?)$/,
+        loader: 'url?limit=10000'
+      }
     ]
   }
 };
