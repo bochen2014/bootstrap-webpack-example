@@ -5,6 +5,7 @@
 // and [gulp-webpack](https://github.com/shama/gulp-webpack).
 //
 var path = require('path');
+const webpack = require('webpack')
 
 module.exports = {
   //entry <============== passed in by gulp
@@ -17,6 +18,13 @@ module.exports = {
     path: path.join(__dirname, './dist'),
     filename: 'main.js'
   },
+
+  plugins: [
+    // poly-fill with 'fetch'
+    new webpack.ProvidePlugin({
+      'jQuery': 'jquery'
+    })],
+
   module: {
     // ### Loaders
     loaders: [
